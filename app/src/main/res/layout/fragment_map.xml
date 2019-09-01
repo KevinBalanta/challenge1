@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MapFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map_container">
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <EditText
+        android:id="@+id/marker_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:gravity="center"
+        android:hint="Marker name"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:text="OK"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/information_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="WAIT we are looking for you"
+        android:textSize="30sp"
+
+        android:layout_marginBottom="30dp"
+        />
+    </RelativeLayout>
+
+</FrameLayout>
