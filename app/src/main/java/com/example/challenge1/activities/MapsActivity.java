@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.challenge1.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -73,19 +74,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 // se agrega el marker en mapa y array y se nombra, con su snippet ubication
-                Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latU, longiU)).title(markerNameEt.getText().toString()).snippet(calculateDistance(latU, longiU) +"\n"+ getMarkerAdress(latU, longiU)));
-                markers.add(marker);
-                disableMarkerEdit();
+                if(!markerNameEt.getText().toString().isEmpty() && markerNameEt.getText().toString() != null ){
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latU, longiU)).title(markerNameEt.getText().toString()).snippet(calculateDistance(latU, longiU) +"\n"+ getMarkerAdress(latU, longiU)));
+                    markers.add(marker);
+                    disableMarkerEdit();
+                    calculateDistances();
+                }else{
+                    showToast();
+
+                }
+
+
             }
         });
 
 
-        markers = new ArrayList<>();
+        if(savedInstanceState == null){
+            markers = new ArrayList<>();
+        }else{
+            paintMarkers();
+        }
+
+
+
+
 
 
 
     }
 
+    private void paintMarkers() {
+        for(Marker marker : markers){
+            mMap.addMarker(new MarkerOptions().position(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude)).title(marker.getTitle().toString()).snippet(marker.getSnippet()));
+        }
+        mMap.addMarker(new MarkerOptions().position(new LatLng(myMarker.getPosition().latitude, myMarker.getPosition().longitude)).title(myMarker.getTitle().toString()).snippet(myMarker.getSnippet()));
+    }
+
+    private void showToast() {
+        Toast.makeText(this, "Please enter the marker´s name", Toast.LENGTH_LONG).show();
+    }
 
 
     public void permissions(){

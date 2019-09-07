@@ -4,4 +4,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="information">Hi, to save a location please click for 2 seconds the location on the map.
+    Set the name of the marker and when the marker appears in the screen you can click in it and the information
+    will appear with your distance to that location (the marker). Also, the app will show you the marker closest to you and
+    and when you are at a distance of max 15 meters you will be notified that you have arrived to that place.</string>
 </resources>

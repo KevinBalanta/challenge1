@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.WelcomeFragment">
+    tools:context=".fragments.WelcomeFragment"
+    android:background="@drawable/grad">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -11,6 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        android:textColor="#fff"
+
+        android:layout_marginLeft="15dp"
 
         android:text="CHALLENGE #1 BY: KEVIN BALANTA MUÑOZ" />
 
@@ -19,6 +24,21 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="WELCOME" />
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:text="@string/information" />
+
+    <Button
+        android:id="@+id/btn_init"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="100dp"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:background="#0fff"
+        android:text="GO!"/>
 
 </RelativeLayout>

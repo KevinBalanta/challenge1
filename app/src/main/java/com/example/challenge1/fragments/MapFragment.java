@@ -93,14 +93,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , Google
             public void onClick(View view) {
                 // se agrega el marker en mapa y array y se nombra, con su snippet ubication
                 TransitionManager.beginDelayedTransition(vwg);
-                Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latU, longiU)).title(markerNameEt.getText().toString()).snippet(calculateDistance(latU, longiU) +"\n"+ getMarkerAdress(latU, longiU)));
-                markers.add(marker);
-                calculateDistances();
-                disableMarkerEdit();
+                //TO DO
+                if(!markerNameEt.getText().toString().equals("") && markerNameEt.getText().toString() != null){
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latU, longiU)).title(markerNameEt.getText().toString()).snippet(calculateDistance(latU, longiU) +"\n"+ getMarkerAdress(latU, longiU)));
+                    markers.add(marker);
+                    calculateDistances();
+                    disableMarkerEdit();
+                }else{
+                    showToast("Please set the marker´s name");
+                }
+
             }
         });
 
         return viewRoot;
+    }
+
+    private void showToast(String msg) {
+        Toast.makeText(this.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -120,7 +130,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , Google
 
         markers = new ArrayList<>();
 
+
+
     }
+
 
 
     @Override
@@ -251,7 +264,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , Google
         String adr = adress.get(0).getAddressLine(0);
         String city = adress.get(0).getLocality();
 
-        return "Address: "+adr+"\n"+ " City: "+ city;
+        String loc = (adress.get(0).getAddressLine(0) == null) ? "" : adress.get(0).getAddressLine(0)  +"\n"+ " City: "+ ((adress.get(0).getLocality() == null) ? "" : adress.get(0).getLocality());
+
+        return loc;
     }
 
     private void enableMarkerEdit(){
@@ -281,7 +296,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , Google
             if(enableToAdd){
                 enableMarkerEdit();
             }else{
-                Toast.makeText(getContext(), "Please set the marker´s name", Toast.LENGTH_LONG);
+                showToast("Please set the marker´s name");
             }
 
         }
